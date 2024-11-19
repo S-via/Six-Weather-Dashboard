@@ -6,7 +6,8 @@ const searchButton = document.querySelector('#citybutton');
 // empty container for weather 
 const emptyContainer = document.querySelector('#currentweathercontainer');
 // empty container for 5 day weather
- 
+const emptyFiveContainer = document.querySelector('#fivedayforcast')
+
 
 // logic to save data in local storage
 /* const savedWeatherData = localStorage.getItem('weatherData');
@@ -47,6 +48,7 @@ const getWeather = function (city) {
                 const lon = data[0].lon;
 
                 currentWeather(lat, lon);
+                currentFiveWeather(lat, lon);
 
             }
         })
@@ -71,19 +73,54 @@ const currentWeather = function (lat, lon) {
 
 // function to display current weather
 const displayWeather = function (weatherData) {
- 
-            emptyContainer.innerHTML =
-                `
-            <h2>${weatherData.name}</h2>
-             <p>Temp:${weatherData.main.temp}</p><br>
-            <p>Wind: ${weatherData.wind.speed}</p><br>
-            <p>Humidity:${weatherData.main.humidity} </p><br>
-           
+    const currentDate = new Date(weatherData.dt*1000).toLocaleDateString('en-US',{
+        month:'2-digit',
+        day:'2-digit',
+        year:'numeric'
+    })
+    
+    emptyContainer.innerHTML =
+    `<h2>${weatherData.name}</h2>
+    <p>${currentDate}</p>
+    <p>Temp:${weatherData.main.temp}</p><br>
+    <p>Wind: ${weatherData.wind.speed}</p><br>
+    <p>Humidity:${weatherData.main.humidity} </p><br>`
+}
 
-            `
+// Fetch 5 day forecast
+const currentFiveWeather = function (lat, lon) {
+    const fiveWeather = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+    fetch(fiveWeather)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        displayFiveWeather(data);
+    })
+    
+}
+// function to display 5 day forecast
+// Xpert learning assistant 
 
+const displayFiveWeather = function (data) {
+    const filterData = data.list.filter((_,index)=> index<5);
+    
+    emptyFiveContainer.innerHTML =`<h2>5-Day Forecast</h2>`;
 
+    filterData.forEach(forecast =>{
+
+        const currentDate = new Date(forecast.dt_txt).toLocaleDateString('en-US',{
+            month:'2-digit',
+            day:'2-digit',
+            year:'2-digit'
+        })
         
+        emptyFiveContainer.innerHTML +=
 
-
+        `<p>${currentDate}</p>
+        <p>Temp:${forecast.main.temp}</p><br>
+        <p>Wind: ${forecast.wind.speed}</p><br>
+        <p>Humidity:${forecast.main.humidity} </p><br>`
+    })
+    
 } 
