@@ -81,10 +81,10 @@ const displayWeather = function (weatherData) {
     
     emptyContainer.innerHTML =
     `<h2>${weatherData.name}</h2>
-    <p>${currentDate}</p>
-    <p>Temp:${weatherData.main.temp}</p><br>
-    <p>Wind: ${weatherData.wind.speed}</p><br>
-    <p>Humidity:${weatherData.main.humidity} </p><br>`
+    <p>${currentDate}
+    Temp:${weatherData.main.temp}
+    Wind: ${weatherData.wind.speed}
+    Humidity:${weatherData.main.humidity}</p>`
 }
 
 // Fetch 5 day forecast
@@ -105,7 +105,7 @@ const currentFiveWeather = function (lat, lon) {
 const displayFiveWeather = function (data) {
     const filterData = data.list.filter((_,index)=> index<5);
     
-    emptyFiveContainer.innerHTML =`<h2>5-Day Forecast</h2>`;
+    emptyFiveContainer.innerHTML =`<h2>5-Day Forecast:</h2>`;
 
     filterData.forEach(forecast =>{
 
@@ -117,10 +117,10 @@ const displayFiveWeather = function (data) {
         
         emptyFiveContainer.innerHTML +=
 
-        `<p>${currentDate}</p>
-        <p>Temp:${forecast.main.temp}</p><br>
-        <p>Wind: ${forecast.wind.speed}</p><br>
-        <p>Humidity:${forecast.main.humidity} </p><br>`
+        `<p>${currentDate}
+        Temp:${forecast.main.temp}
+        Wind: ${forecast.wind.speed}
+        Humidity:${forecast.main.humidity} </p>`
     })
     
 } 

@@ -1,0 +1,45 @@
+
+header{
+    background-color: #f9d9c4;
+    padding: 50px;
+    color:aliceblue;
+    display:flex;
+    flex-direction:row-reverse;
+    
+}
+
+.card{
+    float: left;
+}
+
+#searchform{
+
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: center;
+align-items: stretch;
+}
+
+#currentweathercontainer{
+    display: flex;
+    flex-direction: column;
+   outline-color: aqua;
+   border-style: dotted;
+}
+
+#fivedayforcast{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color:#f9d9c4;
+   
+  
+   
+}
+#fivedayforcast p{
+    color:aliceblue;
+    display:ruby;
+}
+
