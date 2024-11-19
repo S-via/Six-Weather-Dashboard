@@ -8,18 +8,21 @@
 <body>
    <header>Weather Dashbord</header>
 
-   <div>
    <!--Searchbar-->
-   <input type="search"id="search">
-   <input type="submit" value="Search">
+   <div class ="card">
+    <h1>Search for the city</h1>
+    <form id = "searchform">
+   <input name="searchcity"id="searchcity"type="text">
+   <button id="citybutton"type="submit"class="btn">Search</button>
+    </form>
 </div>
 
 <!-- The Cities list-->
  <div>
 </div>
 
- <!-- DATA FROM API CALL -->
- <div id="datadisplay">
+ <!-- CURRENT WEATHER -->
+ <div id="currentweathercontainer">
      <h1>City (00/00/0000)</h1>
      <p>Temp:</p><br>
      <p>Wind:</p><br>
@@ -27,7 +30,7 @@
  </div>
 
  <!--5 day forcast from api call -->
- <div class="flex-container" id ="fiveday">
+ <div id ="fiveday">
     <h3>5-Day Forcast:</h3>
     <p>00/00/0000</p>
     <p>Temp:</p>
@@ -36,4 +39,5 @@
 </div>
 
 </body>
+<script src="script.js"></script>
 </html>
