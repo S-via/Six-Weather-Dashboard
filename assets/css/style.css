@@ -19,13 +19,15 @@ flex-direction: column;
 flex-wrap: wrap;
 align-content: center;
 align-items: stretch;
+
 }
 
 #currentweathercontainer{
     display: flex;
     flex-direction: column;
-   outline-color: aqua;
-   border-style: dotted;
+    outline-color: aqua;
+    border-style: dotted;
+    padding: 20px;
 }
 
 #fivedayforcast{
