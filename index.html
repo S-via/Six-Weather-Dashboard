@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
+
 <body>
-   <header>Weather Dashbord</header>
+    <header>Weather Dashbord</header>
 
-   <!--Searchbar-->
-   <div class ="card">
-    <h1>Search for the city</h1>
-    <form id = "searchform">
-   <input name="searchcity"id="searchcity"type="text">
-   <button id="citybutton"type="submit"class="btn">Search</button>
-    </form>
-</div>
+    <!--Stack them on top-->
+    <div class="stack">
+        <!--Searchbar-->
+        <div class="card">
+            <h1>Search for the city</h1>
+            <form id="searchform">
+                <input name="searchcity" id="searchcity" type="text">
+                <button id="citybutton" type="submit" class="btn">Search</button>
+            </form>
+        </div>
+        <!-- The Cities list-->
+        <div id="localStorageDiv">
+        </div>
+    </div>
 
-<!-- The Cities list-->
- <div id ="containerLocalStorage">
-    <button id="citiessearched"></button>
- </div>
+    <!-- CURRENT WEATHER DISPLAY -->
 
- <!-- CURRENT WEATHER DISPLAY -->
-  
- <div id="currentweathercontainer">
-  </div>
+    <div id="currentweathercontainer">
+    </div>
 
- <!--5 DAY CURRENT DISPLAY WEATHER -->
- 
- <div id ="fivedayforcast">
-</div>
+    <!--5 DAY CURRENT DISPLAY WEATHER -->
+
+    <div id="fivedayforcast">
+    </div>
 
 </body>
 <script src="script.js"></script>
+
 </html>
