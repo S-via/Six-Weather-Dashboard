@@ -8,9 +8,9 @@ const emptyContainer = document.querySelector('#currentweathercontainer');
 // empty container for 5 day weather
 const emptyFiveContainer = document.querySelector('#fivedayforcast')
 // empty div for button id 
-const containerLocalStorage = document.querySelector('#containerLocalStorage');
+const localStorageDiv = document.querySelector('#localStorageDiv');
 // button where previous cities search where used 
-const buttonSearch = document.querySelector('#citiessearched');
+const buttonSearch = document.querySelector('#buttonsearched');
 
 
 const formSubmitHandler = function (event) {
@@ -136,11 +136,30 @@ const saveWeatherData = function(city){
     console.log('after adding', savedWeatherData);
 }
 
-/*
+
 // LOGIC TO DISPLAY DATA 
+// Xpert Learning assitant 
 const displayWeatherData = function () {
-    const displayCity = JSON.parse(localStorage.getItem('weatherData')|| [];
-    }
+    return;
+}
+    const displayCity = JSON.parse(localStorage.getItem('weatherData'))|| [];
+    // append city to button
+    displayCity.forEach(city =>{
+        const button = document.createElement('button');
+        button.textContent = city;
+        button.addEventListener('click',() =>{
+            getWeather(city);
+        });
+       
+        
+        //append button to container
+        localStorageDiv.appendChild(button)
+    },
+    ),
+    
+
+
+document.addEventListener('DOMContentLoaded',displayWeatherData)
+
     
     
-    */

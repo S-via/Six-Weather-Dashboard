@@ -10,16 +10,30 @@ header{
 
 .card{
     float: left;
-}
 
+}
+button {
+
+}
+.stack {
+    
+    display: inline-flex;
+    background-color: #f9d9c4;
+    flex-direction: column;
+    margin: 40px;
+}
 #searchform{
 
-display: flex;
+/* display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 align-content: center;
-align-items: stretch;
+align-items: stretch; */
 
+}
+#localStorageDiv{
+    background-color: blueviolet;
+    display: contents;
 }
 
 #currentweathercontainer{
