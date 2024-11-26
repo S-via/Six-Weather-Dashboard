@@ -9,78 +9,68 @@ const emptyContainer = document.querySelector('#currentweathercontainer');
 const emptyFiveContainer = document.querySelector('#fivedayforcast')
 // empty div for button id 
 const containerLocalStorage = document.querySelector('#containerLocalStorage');
+// button where previous cities search where used 
+const buttonSearch = document.querySelector('#citiessearched');
 
 
-
-
-
-/*
-// LOGIC TO DISPLAY DATA 
-const displayWeatherData = function () {
-    const displayCity = JSON.parse(localStorage.getItem('weatherData')|| [];
-    }
+const formSubmitHandler = function (event) {
+    event.preventDefault();
+    const city = searchInputValue.value.trim();
     
-    
-    */
-   
-   const formSubmitHandler = function (event) {
-       event.preventDefault();
-       const city = searchInputValue.value.trim();
-       
-       if (city) {
-           console.log('city added')
-           getWeather(city);
-           //save to localStorage
-           saveWeatherData(city);
-           
-           // clear input
-           searchInputValue.value='';
-        } else {
-            alert('add city')
-        }
-    }
-    searchButton.addEventListener('click', formSubmitHandler);
-    
-    // add logic to button to retrieve city names weather allready listed
-    
-    // FETCH CURRENT
-    const getWeather = function (city) {
-        const queryString = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}
-        `
-        ;
-        fetch(queryString)
-        .then(function (response) {
-            
-            return response.json();
-            
-            
-        }).then(function (data) {
-            if (data.length) {
-                const lat = data[0].lat;
-                const lon = data[0].lon;
-                
-                currentWeather(lat, lon);
-                currentFiveWeather(lat, lon);
-                
-            }
-        })
+    if (city) {
+        console.log('city added')
+        getWeather(city);
+        //save to localStorage
+        saveWeatherData(city);
         
-        .catch(function (error) {
-            alert('error connecting')
-        })
+        // clear input
+        searchInputValue.value='';
+    } else {
+        alert('add city')
     }
-    // function  to get current weather using lon  & lat
-    const currentWeather = function (lat, lon) {
-        const cWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
-        fetch(cWeather)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
+}
+searchButton.addEventListener('click', formSubmitHandler);
+
+// add logic to button to retrieve city names weather allready listed
+
+// FETCH CURRENT
+const getWeather = function (city) {
+    const queryString = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${APIKey}
+    `
+    ;
+    fetch(queryString)
+    .then(function (response) {
+        
+        return response.json();
+        
+        
+    }).then(function (data) {
+        if (data.length) {
+            const lat = data[0].lat;
+            const lon = data[0].lon;
             
-            displayWeather(data);
+            currentWeather(lat, lon);
+            currentFiveWeather(lat, lon);
+            
         }
-    );
+    })
+    
+    .catch(function (error) {
+        alert('error connecting')
+    })
+}
+// function  to get current weather using lon  & lat
+const currentWeather = function (lat, lon) {
+    const cWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+    fetch(cWeather)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        
+        displayWeather(data);
+    }
+);
 }
 
 // function to display current weather
@@ -138,10 +128,19 @@ const displayFiveWeather = function (data) {
 } 
 // LOGIC TO SAVE TO LOCAL STORAGE
 const saveWeatherData = function(city){
-
-let savedWeatherData =  JSON.parse(localStorage.getItem('weatherData')) || [];
-console.log('before adding', savedWeatherData);
-savedWeatherData.push(city)
-localStorage.setItem('weatherData', JSON.stringify(savedWeatherData));
-console.log('after adding', savedWeatherData);
+    
+    let savedWeatherData =  JSON.parse(localStorage.getItem('weatherData')) || [];
+    console.log('before adding', savedWeatherData);
+    savedWeatherData.push(city)
+    localStorage.setItem('weatherData', JSON.stringify(savedWeatherData));
+    console.log('after adding', savedWeatherData);
 }
+
+/*
+// LOGIC TO DISPLAY DATA 
+const displayWeatherData = function () {
+    const displayCity = JSON.parse(localStorage.getItem('weatherData')|| [];
+    }
+    
+    
+    */
