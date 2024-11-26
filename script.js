@@ -9,8 +9,6 @@ const emptyContainer = document.querySelector('#currentweathercontainer');
 const emptyFiveContainer = document.querySelector('#fivedayforcast')
 // empty div for button id 
 const localStorageDiv = document.querySelector('#localStorageDiv');
-// button where previous cities search where used 
-const buttonSearch = document.querySelector('#buttonsearched');
 
 
 const formSubmitHandler = function (event) {
