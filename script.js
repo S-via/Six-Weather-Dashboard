@@ -8,7 +8,7 @@ const emptyContainer = document.querySelector('#currentweathercontainer');
 // empty container for 5 day weather
 const emptyFiveContainer = document.querySelector('#fivedayforcast')
 // empty div for button id 
-const localStorageDiv = document.querySelector('#localStorageDiv');
+const localStorageDiv = document.querySelector('.card');
 
 
 const formSubmitHandler = function (event) {
@@ -80,11 +80,11 @@ const displayWeather = function (weatherData) {
     })
     
     emptyContainer.innerHTML =
-    `<h2>${weatherData.name}</h2>
-    <p>${currentDate}
-    Temp:${weatherData.main.temp}
-    Wind: ${weatherData.wind.speed}
-    Humidity:${weatherData.main.humidity}</p>`
+    `<h2>${weatherData.name} (${currentDate})</h2>
+    <ul>
+    <li>Temp: ${weatherData.main.temp} °F</li>
+    <li>Wind: ${weatherData.wind.speed} MPH</li>
+    <li>Humidity: ${weatherData.main.humidity} %</li></ul>`
 }
 
 // Fetch 5 day forecast
@@ -117,10 +117,13 @@ const displayFiveWeather = function (data) {
         
         emptyFiveContainer.innerHTML +=
         
-        `<p>${currentDate}
-        Temp:${forecast.main.temp}
-        Wind: ${forecast.wind.speed}
-        Humidity:${forecast.main.humidity} </p>`
+        `<div><ul>
+        <li id="date">${currentDate}</li>
+        <li>Temp: ${forecast.main.temp} °F</li>
+        <li> Wind: ${forecast.wind.speed} MPH</li>
+      <li> Humidity: ${forecast.main.humidity} %</li>
+      </ul></div>
+      `
     })
     
 } 

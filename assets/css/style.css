@@ -1,61 +1,98 @@
-
-header{
-    background-color: #f9d9c4;
-    padding: 50px;
-    color:aliceblue;
-    display:flex;
-    flex-direction:row-reverse;
-    
+body {
+    background-color: whitesmoke;
 }
 
-.card{
-    float: left;
-
-}
-button {
-
-}
-.stack {
-    
-    display: inline-flex;
-    background-color: #f9d9c4;
-    flex-direction: column;
-    margin: 40px;
-}
-#searchform{
-
-/* display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-align-content: center;
-align-items: stretch; */
-
-}
-#localStorageDiv{
-    background-color: blueviolet;
-    display: contents;
+ul {
+    list-style-type: none;
+    font-weight: 400;
+    font-family: sans-serif, serif;
 }
 
-#currentweathercontainer{
+header {
+    background-color: rgba(237, 237, 212, 0.421);
+    padding: 20px;
+    color: rgb(30, 29, 29);
+    font-size: x-large;
+    text-align: right;
+    font-weight: 800;
+}
+
+.top {
+    display: flex;
+    flex-wrap: nowrap;
+    gap:15%;
+}
+
+.card {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    outline-color: aqua;
+    
+}
+
+#searchform {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+    
+}
+
+#searchcity {
+    width: 100%;
+    height: 50px;
+}
+
+#citybutton {
+    margin-bottom: 20px;
+}
+
+button{
+    padding:6%;
+    margin-bottom: 10%;
+}
+
+#currentweathercontainer {
+    display: flex;
+    flex-direction: column;
     border-style: dotted;
     padding: 20px;
+    line-height: 50px;
+    
 }
 
-#fivedayforcast{
+
+#fivedayforcast {
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
-    background-color:#f9d9c4;
-   
-  
-   
-}
-#fivedayforcast p{
-    color:aliceblue;
-    display:ruby;
+    gap: 20px;
+    padding: 10px;
 }
 
+#date{
+    font-size: larger;
+}
+#fivedayforcast div li {
+    color: whitesmoke;
+    font-weight: 800;
+}
+
+#fivedayforcast div {
+    line-height: 50px;
+    width: auto;
+    background-color: rgba(5, 2, 20, 0.859);
+}
+
+@media screen and (max-width:500px) {
+    .card {
+        width: 30%;
+    }
+
+    #fivedayforcast {
+        flex-wrap: wrap;
+    }
+
+    #fivedayforcast div {
+        width: 90%;
+    }
+}
